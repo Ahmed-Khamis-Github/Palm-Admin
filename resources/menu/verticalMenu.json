@@ -41,18 +41,21 @@
       ]
     },
     {
-      "url": "pages/misc-error",
-      "name": "Error",
-      "icon": "menu-icon tf-icons ti ti-alert-triangle",
-      "slug": "pages-misc-error",
-      "target": "_blank"
-    },
-    {
-      "url": "auth/login-basic",
-      "name": "Login",
-      "icon": "menu-icon tf-icons ti ti-login",
-      "slug": "auth-login-basic",
-      "target": "_blank"
+      "icon": "menu-icon tf-icons ti ti-shopping-cart",
+      "name": "orders",
+      "slug": "orders",
+      "submenu": [
+        {
+          "url": "orders",
+          "name": "list",
+          "slug": "orders.index"
+        },
+        {
+          "url": "orders/create",
+          "name": "create",
+          "slug": "orders.create"
+        }
+      ]
     }
   ]
 }

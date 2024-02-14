@@ -41,34 +41,41 @@
                         <h4 class="mb-1 pt-2">Welcome to {{ config('variables.templateName') }}! 👋</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-                        <form id="formAuthentication" class="mb-3" action="{{ route('admin.login') }}" method="post">
-                          @csrf
-                          <div class="mb-3">
-                              <label for="unique_id" class="form-label">Unique ID</label>
-                              <input type="text" class="form-control" id="unique_id" name="unique_id"
-                                  placeholder="Enter your unique ID" autofocus required>
-                          </div>
-                          <div class="mb-3 form-password-toggle">
-                              <div class="input-group input-group-merge">
-                                  <input type="password" id="password" class="form-control" name="password"
-                                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                      aria-describedby="password" required>
-                                  <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-                              </div>
-                          </div>
-                          <div class="mb-3">
-                              <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="remember-me" name="remember">
-                                  <label class="form-check-label" for="remember-me">
-                                      Remember Me
-                                  </label>
-                              </div>
-                          </div>
-                          <div class="mb-3">
-                              <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-                          </div>
-                      </form>
-                      
+                        <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="post">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="unique_id" class="form-label">Unique ID</label>
+                                <input type="text" class="form-control" id="unique_id" name="unique_id"
+                                    placeholder="Enter your unique ID" autofocus required>
+
+                                @error('unique_id')
+                                    <div style="color: red; font-weight: bold"> {{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" class="form-control" name="password"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="password" required>
+                                    @error('password')
+                                        <div style="color: red; font-weight: bold"> {{ $message }}</div>
+                                    @enderror
+                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember-me" name="remember">
+                                    <label class="form-check-label" for="remember-me">
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                            </div>
+                        </form>
+
 
 
 
