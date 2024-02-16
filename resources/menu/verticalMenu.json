@@ -56,6 +56,18 @@
           "slug": "orders.create"
         }
       ]
+    },
+    {
+      "icon": "menu-icon tf-icons ti ti-gift",
+      "name": "offers",
+      "slug": "offers",
+      "submenu": [
+        {
+          "url": "orders/with-offers",
+          "name": "list",
+          "slug": "offers.show_orders_with_offers"
+        }
+      ]
     }
   ]
 }

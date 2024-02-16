@@ -20,9 +20,9 @@ class Order extends Model
         'attachment',   
     ];
 
-    public function couriers()
+    public function users()
     {
-        return $this->belongsToMany(User::class, 'courier_order')
+        return $this->belongsToMany(User::class, 'order_user')
             ->withTimestamps()
             ->withPivot('chosen')
             ->using(OrderUser::class);

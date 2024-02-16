@@ -46,11 +46,10 @@ class User extends Authenticatable
 
 
     public function orders()
-{
-    return $this->belongsToMany(Order::class, 'courier_order')
-        ->withTimestamps()
-        ->withPivot('chosen')
-        ->using(OrderUser::class);
-}
-
+    {
+        return $this->belongsToMany(Order::class, 'order_user')
+            ->withTimestamps()
+            ->withPivot('chosen')
+            ->using(OrderUser::class);
+    }
 }

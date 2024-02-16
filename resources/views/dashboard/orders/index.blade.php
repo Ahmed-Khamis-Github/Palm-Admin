@@ -48,7 +48,12 @@
                                 <td>
                                     {{ $order->destination }}
                                 </td>
-                                <td><span class="badge bg-label-primary me-1">{{ $order->order_status }}</span></td>
+
+                                @if ($order->order_status == 'Accepted')
+                                    <td><span class="badge bg-label-success me-1">{{ $order->order_status }}</span></td>
+                                @else
+                                    <td><span class="badge bg-label-primary me-1">{{ $order->order_status }}</span></td>
+                                @endif
 
 
                                 <td>

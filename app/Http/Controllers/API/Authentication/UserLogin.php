@@ -17,10 +17,10 @@ class UserLogin extends Controller
 
         $credentials =['unique_id' => $request->unique_id, 'password' => $request->password] ;
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
+        if (Auth::guard('web')->attempt($credentials)) {
+            $user = Auth::guard('web')->user();
             $user->tokens()->delete();
-            $data['token'] =  $user->createToken('User')->plainTextToken;
+            $data['token'] = $user->createToken('UserLogin',['User'])->plainTextToken;
             $data['name'] =  $user->name;
             $data['email'] =  $user->email;
             $data['unique_id'] =  $user->unique_id;
@@ -28,5 +28,7 @@ class UserLogin extends Controller
         } else {
             return ApiResponse::sendResponse(401, 'Error with your credentials', null);
         }
+
+         
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
 use App\Http\Controllers\Dashboard\CompanyController;
 use App\Http\Controllers\Dashboard\OrderController;
+use App\Http\Controllers\Dashboard\OrderUserController;
 use App\Http\Controllers\Dashboard\UserController;
 
 /*
@@ -42,6 +43,12 @@ Route::middleware(['auth'])->group(function () {
     // Companies resource routes
     Route::resource('companies', CompanyController::class);
 
+    //offers 
+    Route::get('orders/with-offers', [OrderUserController::class, 'showOrdersWithOffers'])->name('offers.show_orders_with_offers');
+    Route::get('orders/{order}/offers', [OrderUserController::class, 'showOffersForOrder'])->name('offers.show_for_order');
+
+    Route::patch('offers/accept/{offer}', [OrderUserController::class, 'acceptOffer'])->name('offers.accept');
+
     // orders routes 
     Route::resource('orders', OrderController::class);
 });
@@ -51,3 +58,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('login', [LoginBasic::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginBasic::class, 'authenticate']);
 Route::post('logout', [LoginBasic::class, 'logout'])->name('logout');
+
+
+// Route::get('orders/{order}/applied-offers', [OrderUserController::class, 'showAppliedOffers'])->name('orders.applied_offers');
