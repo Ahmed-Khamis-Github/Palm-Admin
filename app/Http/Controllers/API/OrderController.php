@@ -126,4 +126,25 @@ class OrderController extends Controller
         return ApiResponse::sendResponse(200, 'Orders Retrieved Successfully', OrderResource::collection($orders));
 
     }
+
+
+    //search for order
+    public function search(Request $request)
+    {
+        $companyId = auth()->user()->id; // Assuming the company_id is stored in the 'id' field of the company table
+
+        $query = Order::where('company_id', $companyId);
+
+        // Search by order ID if the 'search' parameter is provided in the request
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('id', $searchTerm);
+        }
+
+        $orders = $query->get();
+
+ 
+        return ApiResponse::sendResponse(200, 'Order Retrieved Successfully', OrderResource::collection($orders));
+
+    }
 }

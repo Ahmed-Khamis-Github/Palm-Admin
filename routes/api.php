@@ -69,3 +69,7 @@ Route::get('/user/orders/{orderId}', [OrderController::class, 'getOrderInfo']);
 
 // show orders for company
 Route::get('/company/all-orders-for-company', [OrderController::class, 'getAllOrdersForCompany']);
+
+
+//search by order id
+Route::get('/company/search', [OrderController::class, 'search']);
